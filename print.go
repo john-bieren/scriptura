@@ -10,11 +10,11 @@ import (
 
 // printPassage prints the given passage of book from the Bible.
 func printPassage(book, passage string) {
-	book_chapters, ok := Bible[book]
+	bookChapters, ok := Bible[book]
 	if !ok {
 		if book == "Psalm" {
 			book = "Psalms"
-			book_chapters = Bible["Psalms"]
+			bookChapters = Bible["Psalms"]
 		} else if regexp.MustCompile("^[-1-3A-Za-z]+$").MatchString(book) {
 			fmt.Printf("Unrecognized book \"%s\": check your capitalization, spelling, and formatting\n", book)
 			fmt.Println("Run 'scriptura --books' to see the properly formatted book names")
@@ -26,50 +26,50 @@ func printPassage(book, passage string) {
 	}
 
 	if passage == "" {
-		printChapters(book_chapters, book, "1", "")
+		printChapters(bookChapters, book, "1", "")
 		return
 	}
 
-	chapters_re := regexp.MustCompile("^([0-9]*)-([0-9]*)$")
-	chapter_re := regexp.MustCompile("^([0-9]+)$")
-	verses_re := regexp.MustCompile("^([0-9]+):([0-9]*)-([0-9]*)$")
-	verse_re := regexp.MustCompile("^([0-9]+):([0-9]+)$")
+	chaptersRe := regexp.MustCompile("^([0-9]*)-([0-9]*)$")
+	chapterRe := regexp.MustCompile("^([0-9]+)$")
+	versesRe := regexp.MustCompile("^([0-9]+):([0-9]*)-([0-9]*)$")
+	verseRe := regexp.MustCompile("^([0-9]+):([0-9]+)$")
 
-	if chapters_re.MatchString(passage) {
-		matches := chapters_re.FindStringSubmatch(passage)
+	if chaptersRe.MatchString(passage) {
+		matches := chaptersRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
 		if matches[1] == matches[2] {
 			rangeLengthOneNotice(book, passage)
 		}
 
-		printChapters(book_chapters, book, matches[1], matches[2])
-	} else if chapter_re.MatchString(passage) {
-		matches := chapter_re.FindStringSubmatch(passage)
+		printChapters(bookChapters, book, matches[1], matches[2])
+	} else if chapterRe.MatchString(passage) {
+		matches := chapterRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
-		printChapters(book_chapters, book, matches[1], matches[1])
-	} else if verses_re.MatchString(passage) {
-		matches := verses_re.FindStringSubmatch(passage)
+		printChapters(bookChapters, book, matches[1], matches[1])
+	} else if versesRe.MatchString(passage) {
+		matches := versesRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
 		if matches[2] == matches[3] {
 			rangeLengthOneNotice(book, passage)
 		}
 
-		chapter_verses, ok := book_chapters[matches[1]]
+		chapterVerses, ok := bookChapters[matches[1]]
 		if !ok {
-			notEnoughChaptersNotice(book_chapters, book, false)
+			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
-		printVerses(chapter_verses, book, matches[1], matches[2], matches[3])
-	} else if verse_re.MatchString(passage) {
-		matches := verse_re.FindStringSubmatch(passage)
+		printVerses(chapterVerses, book, matches[1], matches[2], matches[3])
+	} else if verseRe.MatchString(passage) {
+		matches := verseRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
 
-		chapter_verses, ok := book_chapters[matches[1]]
+		chapterVerses, ok := bookChapters[matches[1]]
 		if !ok {
-			notEnoughChaptersNotice(book_chapters, book, false)
+			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
-		printVerses(chapter_verses, book, matches[1], matches[2], matches[2])
+		printVerses(chapterVerses, book, matches[1], matches[2], matches[2])
 	} else {
 		fmt.Println("Invalid arguments")
 		usage()
@@ -88,63 +88,63 @@ func errorIfZeroes(matches []string) {
 
 // rangeLengthOneNotice gives the user feedback if their range has a length of one.
 func rangeLengthOneNotice(book, passage string) {
-	correct_input := strings.TrimSuffix(strings.SplitN(passage, "-", 2)[0], ":")
-	if correct_input == "" {
+	correctInput := strings.TrimSuffix(strings.SplitN(passage, "-", 2)[0], ":")
+	if correctInput == "" {
 		fmt.Printf("\033[1mNote: \"scriptura %s\" produces the same output\033[0m\n", book)
 	} else {
-		fmt.Printf("\033[1mNote: \"scriptura %s %s\" produces the same output\033[0m\n", book, correct_input)
+		fmt.Printf("\033[1mNote: \"scriptura %s %s\" produces the same output\033[0m\n", book, correctInput)
 	}
 }
 
-// printChapters prints the inclusive range (bounded by start and end) of chapters from book_chapters.
+// printChapters prints the inclusive range (bounded by start and end) of chapters from bookChapters.
 // start and end can be empty strings representing the start or end of the book's chapters.
-func printChapters(book_chapters map[string]map[string]string, book, start, end string) {
+func printChapters(bookChapters map[string]map[string]string, book, start, end string) {
 	if start == "" {
 		start = "1"
 	}
 
 	if end == "" {
-		chapter_int, _ := strconv.Atoi(start)
-		if chapter_int > len(book_chapters) {
-			notEnoughChaptersNotice(book_chapters, book, false)
+		chapterInt, _ := strconv.Atoi(start)
+		if chapterInt > len(bookChapters) {
+			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
-		var chapter_str string
-		var first_newline_skipped bool
+		var chapterStr string
+		var firstNewlineSkipped bool
 		for {
-			chapter_str = strconv.Itoa(chapter_int)
-			chapter_verses, ok := book_chapters[chapter_str]
+			chapterStr = strconv.Itoa(chapterInt)
+			chapterVerses, ok := bookChapters[chapterStr]
 			if !ok {
 				break
 			}
 
 			// skip the newline before the first chapter
-			if first_newline_skipped {
+			if firstNewlineSkipped {
 				fmt.Print("\n")
 			} else {
-				first_newline_skipped = true
+				firstNewlineSkipped = true
 			}
 			if book == "Psalms" {
-				fmt.Printf("  \033[1mPsalm %s\033[0m\n", chapter_str)
+				fmt.Printf("  \033[1mPsalm %s\033[0m\n", chapterStr)
 			} else {
-				fmt.Printf("  \033[1mChapter %s\033[0m\n", chapter_str)
+				fmt.Printf("  \033[1mChapter %s\033[0m\n", chapterStr)
 			}
-			printVerses(chapter_verses, book, chapter_str, "1", "")
-			chapter_int++
+			printVerses(chapterVerses, book, chapterStr, "1", "")
+			chapterInt++
 		}
 	} else {
-		start_int, _ := strconv.Atoi(start)
-		if start_int > len(book_chapters) {
-			notEnoughChaptersNotice(book_chapters, book, false)
+		startInt, _ := strconv.Atoi(start)
+		if startInt > len(bookChapters) {
+			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
-		end_int, _ := strconv.Atoi(end)
-		chapters := generateRange(start_int, end_int)
+		endInt, _ := strconv.Atoi(end)
+		chapters := generateRange(startInt, endInt)
 
 		for i, chapter := range chapters {
-			chapter_verses, ok := book_chapters[chapter]
+			chapterVerses, ok := bookChapters[chapter]
 			if !ok {
-				notEnoughChaptersNotice(book_chapters, book, true)
+				notEnoughChaptersNotice(bookChapters, book, true)
 				return
 			}
 
@@ -158,29 +158,29 @@ func printChapters(book_chapters map[string]map[string]string, book, start, end 
 					fmt.Printf("  \033[1mChapter %s\033[0m\n", chapter)
 				}
 			}
-			printVerses(chapter_verses, book, chapter, "1", "")
+			printVerses(chapterVerses, book, chapter, "1", "")
 		}
 	}
 }
 
 // notEnoughChaptersNotice tells the user if their passage references chapters that do not exist in book.
-func notEnoughChaptersNotice(book_chapters map[string]map[string]string, book string, bold bool) {
+func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book string, bold bool) {
 	if bold {
-		if len(book_chapters) > 1 {
+		if len(bookChapters) > 1 {
 			if book == "Psalms" {
 				fmt.Println("\033[1mThere are only 150 psalms\033[0m")
 			} else {
-				fmt.Printf("\033[1m%s only has %d chapters\033[0m\n", book, len(book_chapters))
+				fmt.Printf("\033[1m%s only has %d chapters\033[0m\n", book, len(bookChapters))
 			}
 		} else {
 			fmt.Printf("\033[1m%s only has 1 chapter\033[0m\n", book)
 		}
 	} else {
-		if len(book_chapters) > 1 {
+		if len(bookChapters) > 1 {
 			if book == "Psalms" {
 				fmt.Println("There are only 150 psalms")
 			} else {
-				fmt.Printf("%s only has %d chapters\n", book, len(book_chapters))
+				fmt.Printf("%s only has %d chapters\n", book, len(bookChapters))
 			}
 		} else {
 			fmt.Printf("%s only has 1 chapter\n", book)
@@ -188,66 +188,66 @@ func notEnoughChaptersNotice(book_chapters map[string]map[string]string, book st
 	}
 }
 
-// printVerses prints the inclusive range (bounded by start and end) of verses from chapter_verses.
+// printVerses prints the inclusive range (bounded by start and end) of verses from chapterVerses.
 // start and end can be empty strings representing the start or end of the chapter's verses.
-func printVerses(chapter_verses map[string]string, book, chapter, start, end string) {
+func printVerses(chapterVerses map[string]string, book, chapter, start, end string) {
 	if start == "" {
 		start = "1"
 	}
 
 	if end == "" {
-		verse_int, _ := strconv.Atoi(start)
-		if verse_int > len(chapter_verses) {
-			notEnoughVersesNotice(chapter_verses, book, chapter, false)
+		verseInt, _ := strconv.Atoi(start)
+		if verseInt > len(chapterVerses) {
+			notEnoughVersesNotice(chapterVerses, book, chapter, false)
 			return
 		}
-		var verse_str string
+		var verseStr string
 		for {
-			verse_str = strconv.Itoa(verse_int)
-			verse_text, ok := chapter_verses[verse_str]
+			verseStr = strconv.Itoa(verseInt)
+			verseText, ok := chapterVerses[verseStr]
 			if !ok {
 				break
 			}
-			fmt.Printf("  \033[1m%s\033[0m %s\n", verse_str, verse_text)
-			verse_int++
+			fmt.Printf("  \033[1m%s\033[0m %s\n", verseStr, verseText)
+			verseInt++
 		}
 	} else {
-		start_int, _ := strconv.Atoi(start)
-		if start_int > len(chapter_verses) {
-			notEnoughVersesNotice(chapter_verses, book, chapter, false)
+		startInt, _ := strconv.Atoi(start)
+		if startInt > len(chapterVerses) {
+			notEnoughVersesNotice(chapterVerses, book, chapter, false)
 			return
 		}
-		end_int, _ := strconv.Atoi(end)
-		verses := generateRange(start_int, end_int)
+		endInt, _ := strconv.Atoi(end)
+		verses := generateRange(startInt, endInt)
 
 		for _, verse := range verses {
-			verse_text, ok := chapter_verses[verse]
+			verseText, ok := chapterVerses[verse]
 			if !ok {
-				notEnoughVersesNotice(chapter_verses, book, chapter, true)
+				notEnoughVersesNotice(chapterVerses, book, chapter, true)
 				return
 			}
 
 			if len(verses) > 1 {
 				fmt.Printf("  \033[1m%s\033[0m ", verse)
 			}
-			fmt.Println(verse_text)
+			fmt.Println(verseText)
 		}
 	}
 }
 
 // notEnoughVersesNotice tells the user if their passage references verses that do not exist in chapter of book.
-func notEnoughVersesNotice(chapter_verses map[string]string, book, chapter string, bold bool) {
+func notEnoughVersesNotice(chapterVerses map[string]string, book, chapter string, bold bool) {
 	if bold {
 		if book == "Psalms" {
-			fmt.Printf("\033[1mPsalm %s only has %d verses\033[0m\n", chapter, len(chapter_verses))
+			fmt.Printf("\033[1mPsalm %s only has %d verses\033[0m\n", chapter, len(chapterVerses))
 		} else {
-			fmt.Printf("\033[1m%s chapter %s only has %d verses\033[0m\n", book, chapter, len(chapter_verses))
+			fmt.Printf("\033[1m%s chapter %s only has %d verses\033[0m\n", book, chapter, len(chapterVerses))
 		}
 	} else {
 		if book == "Psalms" {
-			fmt.Printf("Psalm %s only has %d verses\n", chapter, len(chapter_verses))
+			fmt.Printf("Psalm %s only has %d verses\n", chapter, len(chapterVerses))
 		} else {
-			fmt.Printf("%s chapter %s only has %d verses\n", book, chapter, len(chapter_verses))
+			fmt.Printf("%s chapter %s only has %d verses\n", book, chapter, len(chapterVerses))
 		}
 	}
 }

@@ -7,17 +7,17 @@ import (
 )
 
 var (
-	// books_flag is the value of the --books flag.
-	books_flag = flag.Bool("books", false, "")
+	// booksFlag is the value of the --books flag.
+	booksFlag = flag.Bool("books", false, "")
 
-	// license_flag is the value of the --license flag.
-	license_flag = flag.Bool("license", false, "")
+	// licenseFlag is the value of the --license flag.
+	licenseFlag = flag.Bool("license", false, "")
 
-	// version_flag is the value of the --version flag.
-	version_flag = flag.Bool("version", false, "")
+	// versionFlag is the value of the --version flag.
+	versionFlag = flag.Bool("version", false, "")
 
-	// books_message is the line-by-line output of the --books flag.
-	books_message = []string{
+	// booksMessage is the line-by-line output of the --books flag.
+	booksMessage = []string{
 		"Listed below are the 73 books of the Bible",
 		"When using scriptura, refer to books exactly as written below",
 		"*Note capitalization and use of dashes*",
@@ -96,8 +96,8 @@ var (
 		"Revelation",
 	}
 
-	// license_message is the line-by-line output of the --license flag.
-	license_message = []string{
+	// licenseMessage is the line-by-line output of the --license flag.
+	licenseMessage = []string{
 		"scriptura uses the Douay-Rheims 1899 American Edition (DRA) version of the Bible",
 		"The text was sourced from eBible.org: ebible.org/Scriptures/engDRA_readaloud.zip",
 		"",
@@ -125,8 +125,8 @@ var (
 		"SOFTWARE.",
 	}
 
-	// usage_message is the line-by-line output of usage().
-	usage_message = []string{
+	// usageMessage is the line-by-line output of usage().
+	usageMessage = []string{
 		fmt.Sprintf("scriptura %s", version),
 		"Read passages from the Bible by book, chapter, or verse",
 		"",
@@ -146,29 +146,29 @@ var (
 
 // processExitFlags runs exit flags.
 func processExitFlags() {
-	if *books_flag {
-		for _, line := range books_message {
+	if *booksFlag {
+		for _, line := range booksMessage {
 			fmt.Println(line)
 		}
 		os.Exit(0)
 	}
 
-	if *license_flag {
-		for _, line := range license_message {
+	if *licenseFlag {
+		for _, line := range licenseMessage {
 			fmt.Println(line)
 		}
 		os.Exit(0)
 	}
 
-	if *version_flag {
+	if *versionFlag {
 		fmt.Println("scriptura", version)
 		os.Exit(0)
 	}
 }
 
-// usage prints usage_message for the --help flag and relevant error messages.
+// usage prints usageMessage for the --help flag and relevant error messages.
 func usage() {
-	for _, line := range usage_message {
+	for _, line := range usageMessage {
 		fmt.Println(line)
 	}
 	os.Exit(0)
