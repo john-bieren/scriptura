@@ -137,7 +137,8 @@ Options:
        --books    Print the list of books and exit
        --help     Print this message and exit
        --license  Print license, citation information and exit
-       --version  Print version and exit`
+       --version  Print version and exit
+`
 )
 
 // processExitFlags runs exit flags.
