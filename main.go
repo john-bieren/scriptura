@@ -6,7 +6,7 @@ import (
 )
 
 // version is the current version of scriptura.
-const version = "v1.0.0"
+const version = "v1.0.1-beta"
 
 // main is scriptura's entry point.
 func main() {

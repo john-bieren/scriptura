@@ -6,10 +6,21 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+
+	"golang.org/x/term"
 )
+
+// terminalWindowWidth is the maximum length after which a line must be wrapped during printing.
+var terminalWindowWidth int
 
 // printPassage prints the given passage of book from the Bible.
 func printPassage(book, passage string) {
+	var err error
+	terminalWindowWidth, _, err = term.GetSize(int(os.Stdout.Fd()))
+	if err != nil {
+		terminalWindowWidth = 535
+	}
+
 	bookChapters, ok := Bible[book]
 	if !ok {
 		if book == "Psalm" {
@@ -188,6 +199,25 @@ func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book str
 	}
 }
 
+// wrapPrint prints text with word wrapping based on terminalWindowWidth.
+func wrapPrint(text string, leadingSpaces, falseLength int) {
+	words := strings.Fields(text)
+	var wrappedText strings.Builder
+	wrappedText.WriteString(strings.Repeat(" ", leadingSpaces))
+	lineLength := leadingSpaces - falseLength
+
+	for _, word := range words {
+		if lineLength+len(word)+1 > terminalWindowWidth {
+			wrappedText.WriteString("\n")
+			lineLength = 0
+		}
+		wrappedText.WriteString(word)
+		wrappedText.WriteString(" ")
+		lineLength += len(word) + 1
+	}
+	fmt.Println(strings.TrimRight(wrappedText.String(), " "))
+}
+
 // printVerses prints the inclusive range (bounded by start and end) of verses from chapterVerses.
 // start and end can be empty strings representing the start or end of the chapter's verses.
 func printVerses(chapterVerses map[string]string, book, chapter, start, end string) {
@@ -201,14 +231,14 @@ func printVerses(chapterVerses map[string]string, book, chapter, start, end stri
 			notEnoughVersesNotice(chapterVerses, book, chapter, false)
 			return
 		}
-		var verseStr string
+
 		for {
-			verseStr = strconv.Itoa(verseInt)
+			verseStr := strconv.Itoa(verseInt)
 			verseText, ok := chapterVerses[verseStr]
 			if !ok {
 				break
 			}
-			fmt.Printf("  \033[1m%s\033[0m %s\n", verseStr, verseText)
+			wrapPrint(fmt.Sprintf("\033[1m%s\033[0m %s", verseStr, verseText), 2, 8)
 			verseInt++
 		}
 	} else {
@@ -220,17 +250,18 @@ func printVerses(chapterVerses map[string]string, book, chapter, start, end stri
 		endInt, _ := strconv.Atoi(end)
 		verses := generateRange(startInt, endInt)
 
-		for _, verse := range verses {
-			verseText, ok := chapterVerses[verse]
+		for _, verseStr := range verses {
+			verseText, ok := chapterVerses[verseStr]
 			if !ok {
 				notEnoughVersesNotice(chapterVerses, book, chapter, true)
 				return
 			}
 
 			if len(verses) > 1 {
-				fmt.Printf("  \033[1m%s\033[0m ", verse)
+				wrapPrint(fmt.Sprintf("\033[1m%s\033[0m %s", verseStr, verseText), 2, 8)
+			} else {
+				wrapPrint(verseText, 0, 0)
 			}
-			fmt.Println(verseText)
 		}
 	}
 }
