@@ -1,6 +1,6 @@
 module github.com/john-bieren/scriptura
 
-go 1.24.4
+go 1.24
 
 require golang.org/x/term v0.32.0
 
