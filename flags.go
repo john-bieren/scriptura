@@ -137,8 +137,7 @@ Options:
        --books    Print the list of books and exit
        --help     Print this message and exit
        --license  Print license, citation information and exit
-       --version  Print version and exit
-`
+       --version  Print version and exit`
 )
 
 // processExitFlags runs exit flags.
@@ -161,6 +160,7 @@ func processExitFlags() {
 
 // usage prints usageMessage for the --help flag and relevant error messages.
 func usage() {
-	fmt.Printf(usageMessage, version)
+	formattedMessage := fmt.Sprintf(usageMessage, version)
+	fmt.Println(formattedMessage)
 	os.Exit(0)
 }

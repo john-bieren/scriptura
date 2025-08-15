@@ -1,6 +1,6 @@
 # scriptura
 
-A CLI app for reading the Bible by book, chapter(s), or verse(s); uses the Douay-Rheims 1899 American Edition (DRA) version of the Bible.
+A command line utility for reading the Bible by book, chapter(s), or verse(s); uses the Douay-Rheims 1899 American Edition (DRA) version of the Bible.
 
 ## Usage
 
