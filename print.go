@@ -18,16 +18,17 @@ func printPassage(book, passage string) {
 	var err error
 	terminalWindowWidth, _, err = term.GetSize(int(os.Stdout.Fd()))
 	if err != nil {
-		terminalWindowWidth = 535
+		terminalWindowWidth = 535 // long enough for the longest verse with its number
 	}
 
+	book = strings.ToLower(book)
 	bookChapters, ok := Bible[book]
 	if !ok {
-		if book == "Psalm" {
-			book = "Psalms"
-			bookChapters = Bible["Psalms"]
-		} else if regexp.MustCompile("^[-1-3A-Za-z]+$").MatchString(book) {
-			fmt.Printf("Unrecognized book \"%s\": check your capitalization, spelling, and formatting\n", book)
+		if book == "psalm" {
+			book = "psalms"
+			bookChapters = Bible[book]
+		} else if regexp.MustCompile("^[1-3a-z-]+$").MatchString(book) {
+			fmt.Printf("Unrecognized book \"%s\": check your spelling and formatting\n", book)
 			fmt.Println("Run 'scriptura --books' to see the properly formatted book names")
 			os.Exit(1)
 		} else {

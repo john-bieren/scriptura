@@ -2,7 +2,7 @@ package main
 
 // Bible is the full text of the Douay-Rheims 1899 American Edition (DRA) version of the Bible by book, chapter, and verse.
 var Bible = map[string]map[string]map[string]string{
-	"Genesis": {
+	"genesis": {
 		"1": {
 			"1":  "In the beginning God created heaven, and earth.",
 			"2":  "And the earth was void and empty, and darkness was upon the face of the deep; and the spirit of God moved over the waters.",
@@ -1635,7 +1635,7 @@ var Bible = map[string]map[string]map[string]string{
 			"25": "And he died being a hundred and ten years old. And being embalmed he was laid in a coffin in Egypt.",
 		},
 	},
-	"Exodus": {
+	"exodus": {
 		"1": {
 			"1":  "These are the names of the children of Israel, that went into Egypt with Jacob: they went in, every man with his household:",
 			"2":  "Ruben, Simeon, Levi, Juda,",
@@ -2928,7 +2928,7 @@ var Bible = map[string]map[string]map[string]string{
 			"36": "For the cloud of the Lord hung over the tabernacle by day, and a fire by night, in the sight of all the children of Israel throughout all their mansions.",
 		},
 	},
-	"Leviticus": {
+	"leviticus": {
 		"1": {
 			"1":  "And the Lord called Moses, and spoke to him from the tabernacle of the testimony, saying:",
 			"2":  "Speak to the children of Israel, and thou shalt say to them: The man among you that shall offer to the Lord a sacrifice of the cattle, that is, offering victims of oxen and sheep,",
@@ -3842,7 +3842,7 @@ var Bible = map[string]map[string]map[string]string{
 			"34": "These are the precepts which the Lord commanded Moses for the children of Israel in mount Sinai.",
 		},
 	},
-	"Numbers": {
+	"numbers": {
 		"1": {
 			"1":  "And the Lord spoke to Moses in the desert of Sinai in the tabernacle of the covenant, the first day of the second month, the second year of their going out of Egypt, saying:",
 			"2":  "Take the sum of all the congregation of the children of Israel by their families, and houses, and the names of every one, as many as are of the male sex,",
@@ -5204,7 +5204,7 @@ var Bible = map[string]map[string]map[string]string{
 			"13": "These are the commandments and judgments, which the Lord commanded by the hand of Moses to the children of Israel, in the plains of Moab upon the Jordan over against Jericho.",
 		},
 	},
-	"Deuteronomy": {
+	"deuteronomy": {
 		"1": {
 			"1":  "These are the words, which Moses spoke to all Israel beyond the Jordan, in the plain wilderness, over against the Red Sea, between Pharan and Thophel and Laban and Haseroth, where there is very much gold:",
 			"2":  "Eleven days’ journey from Horeb by the way of Mount Seir to Cadesbarne.",
@@ -6233,7 +6233,7 @@ var Bible = map[string]map[string]map[string]string{
 			"12": "And all the mighty hand, and great miracles, which Moses did before all Israel.",
 		},
 	},
-	"Joshua": {
+	"joshua": {
 		"1": {
 			"1":  "Now it came to pass after the death of Moses the servant of the Lord, that the Lord spoke to Josue the son of Nun, the minister of Moses, and said to him:",
 			"2":  "Moses my servant is dead: arise, and pass over this Jordan, thou and thy people with thee, into the land which I will give to the children of Israel.",
@@ -6941,7 +6941,7 @@ var Bible = map[string]map[string]map[string]string{
 			"33": "Eleazar also the son of Aaron died: and they buried him in Gabaath that belongeth to Phinees his son, which was given him in mount Ephraim.",
 		},
 	},
-	"Judges": {
+	"judges": {
 		"1": {
 			"1":  "After the death of Josue the children of Israel consulted the Lord, saying: Who shall go up before us against the Chanaanite, and shall be the leader of the war?",
 			"2":  "And the Lord said: Juda shall go up: behold I have delivered the land into his hands.",
@@ -7603,7 +7603,7 @@ var Bible = map[string]map[string]map[string]string{
 			"24": "The children of Israel also returned by their tribes, and families, to their dwellings. In those days there was no king in Israel: but every one did that which seemed right to himself.",
 		},
 	},
-	"Ruth": {
+	"ruth": {
 		"1": {
 			"1":  "In the days of one of the judges, when the judges ruled, there came a famine in the land. And a certain man of Bethlehem Juda, went to sojourn in the land of Moab with his wife and his two sons.",
 			"2":  "He was named Elimelech, and his wife, Noemi: and his two sons, the one Mahalon, and the other Chelion, Ephrathites of Bethlehem Juda. And entering into the country of Moab, they abode there.",
@@ -7698,7 +7698,7 @@ var Bible = map[string]map[string]map[string]string{
 			"22": "Obed begot Isai, Isai begot David.",
 		},
 	},
-	"1-Samuel": {
+	"1-samuel": {
 		"1": {
 			"1":  "There was a man of Ramathaimsophim, of mount Ephraim, and his name was Elcana, the son of Jeroham, the son of Eliu, the son of Thohu, the son of Suph, an Ephraimite:",
 			"2":  "And he had two wives, the name of one was Anna, and the name of the other Phenenna. Phenenna had children: but Anna had no children.",
@@ -8573,7 +8573,7 @@ var Bible = map[string]map[string]map[string]string{
 			"13": "And they took their bones and buried them in the wood of Jabes: and fasted seven days.",
 		},
 	},
-	"2-Samuel": {
+	"2-samuel": {
 		"1": {
 			"1":  "Now it came to pass, after Saul was dead, that David returned from the slaughter of the Amalecites, and abode two days in Siceleg.",
 			"2":  "And on the third day, there appeared a man who came out of Saul’s camp, with his garments rent, and dust strewed on his head: and when he came to David, he fell upon his face, and adored.",
@@ -9318,7 +9318,7 @@ var Bible = map[string]map[string]map[string]string{
 			"25": "And David built there an altar to the Lord, and offered holocausts and peace offerings: and the Lord became merciful to the land, and the plague was stayed from Israel.",
 		},
 	},
-	"1-Kings": {
+	"1-kings": {
 		"1": {
 			"1":  "Now king David was old, and advanced in years: and when he was covered with clothes, he was not warm.",
 			"2":  "His servants therefore said to him: Let us seek for our lord the king, a young virgin, and let her stand before the king, and cherish him, and sleep in his bosom, and warm our lord the king.",
@@ -10181,7 +10181,7 @@ var Bible = map[string]map[string]map[string]string{
 			"54": "He served also Baal, and worshipped him, and provoked the Lord the God of Israel, according to all that his father had done.",
 		},
 	},
-	"2-Kings": {
+	"2-kings": {
 		"1": {
 			"1":  "And Moab rebelled against Israel, after the death of Achab.",
 			"2":  "And Ochozias fell through the lattices of his upper chamber which he had in Samaria, and was sick: and he sent messengers, saying to them: Go, consult Beelzebub, the god of Accaron, whether I shall recover of this my illness.",
@@ -10952,7 +10952,7 @@ var Bible = map[string]map[string]map[string]string{
 			"30": "And he appointed him a continual allowance, which was also given him by the king day by day, all the days of his life.",
 		},
 	},
-	"1-Chronicles": {
+	"1-chronicles": {
 		"1": {
 			"1":  "Adam, Seth, Enos,",
 			"2":  "Cainan, Malaleel, Jared,",
@@ -11952,7 +11952,7 @@ var Bible = map[string]map[string]map[string]string{
 			"30": "And of all his reign, and his valour, and of the times that passed under him, either in Israel, or in all the kingdoms of the countries.",
 		},
 	},
-	"2-Chronicles": {
+	"2-chronicles": {
 		"1": {
 			"1":  "And Solomon the son of David was strengthened in his kingdom, and the Lord his God was with him, and magnified him to a high degree.",
 			"2":  "And Solomon gave orders to all Israel, to the captains of thousands, and of hundreds, and to the rulers, and to the judges of all Israel, and the heads of the families:",
@@ -12848,7 +12848,7 @@ var Bible = map[string]map[string]map[string]string{
 			"23": "Thus saith Cyrus king of the Persians: All the kingdoms of the earth hath the Lord the God of heaven given to me, and he hath charged me to build him a house in Jerusalem, which is in Judea: who is there among you of all his people? The Lord his God be with him, and let him go up.",
 		},
 	},
-	"Ezra": {
+	"ezra": {
 		"1": {
 			"1":  "In the first year of Cyrus king of the Persians, that the word of the Lord by the mouth of Jeremias might be fulfilled, the Lord stirred up the spirit of Cyrus king of the Persians: and he made a proclamation throughout all his kingdom, and in writing also, saying:",
 			"2":  "Thus saith Cyrus king of the Persians: The Lord the God of heaven hath given to me all the kingdoms of the earth, and he hath charged me to build him a house in Jerusalem, which is in Judea.",
@@ -13150,7 +13150,7 @@ var Bible = map[string]map[string]map[string]string{
 			"44": "All these had taken strange wives, and there were among them women that had borne children.",
 		},
 	},
-	"Nehemiah": {
+	"nehemiah": {
 		"1": {
 			"1":  "The words of Nehemias the son of Helchias. And it came to pass in the month of Casleu, in the twentieth year, as I was in the castle of Susa,",
 			"2":  "That Hanani one of my brethren came, he and some men of Juda; and I asked them concerning the Jews, that remained and were left of the captivity, and concerning Jerusalem.",
@@ -13582,7 +13582,7 @@ var Bible = map[string]map[string]map[string]string{
 			"31": "And for the offering of wood at times appointed, and for the firstfruits: remember me, O my God, unto good. Amen.",
 		},
 	},
-	"Tobit": {
+	"tobit": {
 		"1": {
 			"1":  "Tobias of the tribe and city of Nephtali, (which is in the upper parts of Galilee above Naasson, beyond the way that leadeth to the west, having on the right hand the city of Sephet,)",
 			"2":  "When he was made captive in the days of Salmanasar king of the Assyrians, even in his captivity, forsook not the way of truth,",
@@ -13910,7 +13910,7 @@ var Bible = map[string]map[string]map[string]string{
 			"17": "And all his kindred, and all his generation continued in good life, and in holy conversation, so that they were acceptable both to God, and to men, and to all that dwelt in the land.",
 		},
 	},
-	"Judith": {
+	"judith": {
 		"1": {
 			"1":  "Now Arphaxad king of the Medes had brought many nations under his dominions, and he built a very strong city, which he called Ecbatana,",
 			"2":  "Of stones squared and hewed: he made the walls thereof seventy cubits broad, and thirty cubits high, and the towers thereof he made a hundred cubits high. But on the square of them, each side was extended the space of twenty feet.",
@@ -14289,7 +14289,7 @@ var Bible = map[string]map[string]map[string]string{
 			"31": "But the day of the festivity of this victory is received by the Hebrews in the number of holy days, and is religiously observed by the Jews from that time until this day.",
 		},
 	},
-	"Esther": {
+	"esther": {
 		"1": {
 			"1":  "In the days of Assuerus, who reigned from India to Ethiopia over a hundred and twenty-seven provinces:",
 			"2":  "When he sat on the throne of his kingdom, the city Susan was the capital of his kingdom.",
@@ -14598,7 +14598,7 @@ var Bible = map[string]map[string]map[string]string{
 			"24": "And let every province and city, that will not be partaker of this solemnity, perish by the sword and by fire, and be destroyed in such manner as to be made unpassable, both to men and beasts, for an example of contempt, and disobedience.",
 		},
 	},
-	"1-Maccabees": {
+	"1-maccabees": {
 		"1": {
 			"1":  "Now it came to pass, after that Alexander the son of Philip the Macedonian, who first reigned in Greece, coming out of the land of Cethim, had overthrown Darius king of the Persians and Medes:",
 			"2":  "He fought many battles, and took the strong holds of all, and slew the kings of the earth:",
@@ -15561,7 +15561,7 @@ var Bible = map[string]map[string]map[string]string{
 			"24": "Behold these are written in the book of the days of his priesthood, from the time he was made high priest after his father.",
 		},
 	},
-	"2-Maccabees": {
+	"2-maccabees": {
 		"1": {
 			"1":  "To the brethren the Jews that are throughout Egypt, the brethren, the Jews that are in Jerusalem, and in the land of Judea, send health, and good peace.",
 			"2":  "May God be gracious to you, and remember his covenant that he made with Abraham, and Isaac, and Jacob, his faithful servants:",
@@ -16151,7 +16151,7 @@ var Bible = map[string]map[string]map[string]string{
 			"40": "For as it is hurtful to drink always wine, or always water, but pleasant to use sometimes the one, and sometimes the other: so if the speech be always nicely framed, it will not be grateful to the readers. But here it shall be ended.",
 		},
 	},
-	"Job": {
+	"job": {
 		"1": {
 			"1":  "There was a man in the land of Hus, whose name was Job, and that man was simple and upright, and fearing God, and avoiding evil.",
 			"2":  "And there were born to him seven sons and three daughters.",
@@ -17307,7 +17307,7 @@ var Bible = map[string]map[string]map[string]string{
 			"16": "And Job lived after these things, a hundred and forty years, and he saw his children, and his children’s children, unto the fourth generation, and he died an old man, and full of days.",
 		},
 	},
-	"Psalms": {
+	"psalms": {
 		"1": {
 			"1": "Blessed is the man who hath not walked in the counsel of the ungodly, nor stood in the way of sinners, nor sat in the chair of pestilence.",
 			"2": "But his will is in the law of the Lord, and on his law he shall meditate day and night.",
@@ -20139,7 +20139,7 @@ var Bible = map[string]map[string]map[string]string{
 			"6": "let every spirit praise the Lord. Alleluia.",
 		},
 	},
-	"Proverbs": {
+	"proverbs": {
 		"1": {
 			"1":  "The parables of Solomon, the son of David, king of Israel.",
 			"2":  "To know wisdom, and instruction:",
@@ -21118,7 +21118,7 @@ var Bible = map[string]map[string]map[string]string{
 			"31": "Give her of the fruit of her hands: and let her works praise her in the gates.",
 		},
 	},
-	"Ecclesiastes": {
+	"ecclesiastes": {
 		"1": {
 			"1":  "The words of Ecclesiastes, the son of David, king of Jerusalem.",
 			"2":  "Vanity of vanities, said Ecclesiastes vanity of vanities, and all is vanity.",
@@ -21366,7 +21366,7 @@ var Bible = map[string]map[string]map[string]string{
 			"14": "And all things that are done, God will bring into judgment for every error, whether it be good or evil.",
 		},
 	},
-	"Song-of-Solomon": {
+	"song-of-solomon": {
 		"1": {
 			"1":  "Let him kiss me with the kiss of his mouth: for thy breasts are better than wine,",
 			"2":  "Smelling sweet of the best ointments. Thy name is as oil poured out: therefore young maidens have loved thee.",
@@ -21500,7 +21500,7 @@ var Bible = map[string]map[string]map[string]string{
 			"14": "Flee away, O my beloved, and be like to the roe, and to the young hart upon the mountains of aromatical spices.",
 		},
 	},
-	"Wisdom": {
+	"wisdom": {
 		"1": {
 			"1":  "Love justice, you that are the judges of the earth. Think of the Lord in goodness, and seek him in simplicity of heart.",
 			"2":  "For he is found by them that tempt him not: and he sheweth himself to them that have faith in him.",
@@ -21979,7 +21979,7 @@ var Bible = map[string]map[string]map[string]string{
 			"20": "On the other side, the flames wasted not the flesh of corruptible animals walking therein, neither did they melt that good food, which was apt to melt as ice. For in all things thou didst magnify thy people, O Lord, and didst honour them, and didst not despise them, but didst assist them at all times, and in every place.",
 		},
 	},
-	"Sirach": {
+	"sirach": {
 		"1": {
 			"1":  "All wisdom is from the Lord God, and hath been always with him, and is before all time.",
 			"2":  "Who hath numbered the sand of the sea, and the drops of rain, and the days of the world? Who hath measured the height of heaven, and the breadth of the earth, and the depth of the abyss?",
@@ -23674,7 +23674,7 @@ var Bible = map[string]map[string]map[string]string{
 			"38": "Work your work before the time, and he will give you your reward in his time.",
 		},
 	},
-	"Isaiah": {
+	"isaiah": {
 		"1": {
 			"1":  "The vision of Isaias the son of Amos I which he saw concerning Juda and Jerusalem in the days of Ozias, Joathan, Achaz, and Ezechias, kings of Juda.",
 			"2":  "Hear, O ye heavens, and give ear, O earth, for the Lord hath spoken. I have brought up children, and exalted them: but they have despised me.",
@@ -25100,7 +25100,7 @@ var Bible = map[string]map[string]map[string]string{
 			"24": "And they shall go out, and see the carcasses of the men that have transgressed against me: their worm shall not die, and their fire shall not be quenched: and they shall be a loathsome sight to all flesh.",
 		},
 	},
-	"Jeremiah": {
+	"jeremiah": {
 		"1": {
 			"1":  "The words of Jeremias the son of Helcias, of the priests that were in Anathoth, in the land of Benjamin.",
 			"2":  "The word of the Lord which came to him in the days of Josias the son of Amon king of Juda, in the thirteenth year of his reign.",
@@ -26569,7 +26569,7 @@ var Bible = map[string]map[string]map[string]string{
 			"34": "And for his diet a continual provision was allowed him by the king of Babylon, every day a portion, until the day of his death, all the days of his life.",
 		},
 	},
-	"Lamentations": {
+	"lamentations": {
 		"1": {
 			"1":  "Aleph. How doth the city sit solitary that was full of people! how is the mistress of the Gentiles become as a widow: the princes of provinces made tributary!",
 			"2":  "Beth. Weeping she hath wept in the night, and her tears are on her cheeks: there is none to comfort her among all them that were dear to her: all her friends have despised her, and are become her enemies.",
@@ -26735,7 +26735,7 @@ var Bible = map[string]map[string]map[string]string{
 			"22": "But thou hast utterly rejected us, thou art exceedingly angry against us.",
 		},
 	},
-	"Baruch": {
+	"baruch": {
 		"1": {
 			"1":  "And these are the words of the book, which Baruch the son of Nerias, the son of Maasias, the son of Sedecias, the son of Sedei, the son of Helcias, wrote in Babylonia.",
 			"2":  "In the fifth year, in the seventh day of the month, at the time that the Chaldeans took Jerusalem, and burnt it with fire.",
@@ -26962,7 +26962,7 @@ var Bible = map[string]map[string]map[string]string{
 			"72": "Better therefore is the just man that hath no idols: for he shall be far from reproach.",
 		},
 	},
-	"Ezekiel": {
+	"ezekiel": {
 		"1": {
 			"1":  "Now it came to pass in the thirtieth year, in the fourth month, on the fifth day of the month, when I was in the midst of the captives by the river Chobar, the heavens were opened, and I saw the visions of God.",
 			"2":  "On the fifth day of the month, the same was the fifth year of the captivity of king Joachin,",
@@ -28332,7 +28332,7 @@ var Bible = map[string]map[string]map[string]string{
 			"35": "Its circumference was eighteen thousand: and the name of the city from that day, The Lord is there.",
 		},
 	},
-	"Daniel": {
+	"daniel": {
 		"1": {
 			"1":  "In the third year of the reign of Joakim king of Juda, Nabuchodonosor king of Babylon came to Jerusalem, and besieged it.",
 			"2":  "And the Lord delivered into his hands Joakim the king of Juda, and part of the vessels of the house of God: and he carried them away into the land of Sennaar, to the house of his god, and the vessels he brought into the treasure house of his god.",
@@ -28893,7 +28893,7 @@ var Bible = map[string]map[string]map[string]string{
 			"42": "Then the king said: Let all the inhabitants of the whole earth fear the God of Daniel: for he is the Saviour, working signs, and wonders in the earth: who hath delivered Daniel out of the lions’ den.",
 		},
 	},
-	"Hosea": {
+	"hosea": {
 		"1": {
 			"1":  "The word of the Lord, that came to Osee the son of Beeri, in the days of Ozias, Joathan, Achaz, and Ezechias kings of Juda, and in the days of Jeroboam the son of Joas king of Israel.",
 			"2":  "The beginning of the Lord’s speaking by Osse: and the Lord said to Osee: Go, take thee a wife of fornications, and have of her children of fornications: for the land by fornication shall depart from the Lord.",
@@ -29121,7 +29121,7 @@ var Bible = map[string]map[string]map[string]string{
 			"10": "Who is wise, and he shall understand these things? prudent, and he shall know these things? for the ways of the Lord are right, and the just shall walk in them: but the transgressors shall fall in them.",
 		},
 	},
-	"Joel": {
+	"joel": {
 		"1": {
 			"1":  "The word of the Lord that came to Joel the son of Phatuel.",
 			"2":  "Hear this, ye old men, and give ear, all ye inhabitants of the land: did this ever happen in your days, or in the days of your fathers?",
@@ -29202,7 +29202,7 @@ var Bible = map[string]map[string]map[string]string{
 			"21": "And I will cleanse their blood which I had not cleansed: and the Lord will dwell in Sion.",
 		},
 	},
-	"Amos": {
+	"amos": {
 		"1": {
 			"1":  "The words of Amos, who was among herdsmen of Thecua: which he saw concerning Israel in the days of Ozias king of Juda, and in the days of Jeroboam the son of Joas king of Israel two years before the earthquake.",
 			"2":  "And he said: The Lord will roar from Sion, and utter his voice from Jerusalem: and the beautiful places of the shepherds have mourned, and the top of Carmel is withered.",
@@ -29369,7 +29369,7 @@ var Bible = map[string]map[string]map[string]string{
 			"15": "And I will plant them upon their own land: and I will no more pluck them out of their land which I have given them, saith the Lord thy God.",
 		},
 	},
-	"Obadiah": {
+	"obadiah": {
 		"1": {
 			"1":  "The vision of Abdias. Thus saith the Lord God to Edom: We have heard a rumour from the Lord, and he hath sent an ambassador to the nations: Arise, and let us rise up to battle against him.",
 			"2":  "Behold I have made thee small among the nations: thou art exceeding contemptible.",
@@ -29394,7 +29394,7 @@ var Bible = map[string]map[string]map[string]string{
 			"21": "And saviours shall come up into mount Sion to judge the mount of Esau: and the kingdom shall be for the Lord.",
 		},
 	},
-	"Jonah": {
+	"jonah": {
 		"1": {
 			"1":  "Now the word of the Lord came to Jonas the son of Amathi, saying:",
 			"2":  "Arise, and go to Ninive the great city, and preach in it: for the wickedness thereof is come up before me.",
@@ -29452,7 +29452,7 @@ var Bible = map[string]map[string]map[string]string{
 			"11": "And shall not I spare Ninive, that great city, in which there are more than a hundred and twenty thousand persons that know not how to distinguish between their right hand and their left, and many beasts?",
 		},
 	},
-	"Micah": {
+	"micah": {
 		"1": {
 			"1":  "The word of the Lord that came to Micheas the Morasthite, in the days of Joathan, Achaz, and Ezechias, kings of Juda: which he saw concerning Samaria and Jerusalem.",
 			"2":  "Hear, all ye people: and let the earth give ear, and all that is therein: and let the Lord God be a witness to you, the Lord from his holy temple.",
@@ -29572,7 +29572,7 @@ var Bible = map[string]map[string]map[string]string{
 			"20": "Thou wilt perform the truth of Jacob, the mercy to Abraham: which thou hast sworn to our fathers from the days of old.",
 		},
 	},
-	"Nahum": {
+	"nahum": {
 		"1": {
 			"1":  "The burden of Ninive. The book of the vision of Nahum the Elcesite.",
 			"2":  "The Lord is a jealous God, and a revenger: the Lord is a revenger, and hath wrath: the Lord taketh vengeance on his adversaries, and he is angry with his enemies.",
@@ -29627,7 +29627,7 @@ var Bible = map[string]map[string]map[string]string{
 			"19": "Thy destruction is not hidden, thy wound is grievous: all that have heard the fame of thee, have clapped their hands over thee: for upon whom hath not thy wickedness passed continually?",
 		},
 	},
-	"Habakkuk": {
+	"habakkuk": {
 		"1": {
 			"1":  "The burden that Habacuc the prophet saw.",
 			"2":  "How long, O Lord, shall I cry, and thou wilt not hear? shall I cry out to thee suffering violence, and thou wilt not save?",
@@ -29691,7 +29691,7 @@ var Bible = map[string]map[string]map[string]string{
 			"19": "The Lord God is my strength: and he will make my feet like the feet of harts: and he the conqueror will lead me upon my high places singing psalms.",
 		},
 	},
-	"Zephaniah": {
+	"zephaniah": {
 		"1": {
 			"1":  "The word of the Lord that came to Sophonias the son of Chusi, the son of Godolias, the son of Amarias, the son of Ezechias, in the days of Josias the son of Amon king of Juda.",
 			"2":  "Gathering, I will gather together all things from off the face of the land, saith the Lord:",
@@ -29752,7 +29752,7 @@ var Bible = map[string]map[string]map[string]string{
 			"20": "At that time, when I will bring you: and at the time that I will gather you: for I will give you a name, and praise among all the people of the earth, when I shall have brought back your captivity before your eyes, saith the Lord.",
 		},
 	},
-	"Haggai": {
+	"haggai": {
 		"1": {
 			"1":  "In the second year of Darius the king, in the sixth month, in the first day of the month, the word of the Lord came by the hand of Aggeus the prophet, to Zorobabel the son of Salathiel, governor of Juda, and to Jesus the son of Josedec the high priest, saying:",
 			"2":  "Thus saith the Lord of hosts, saying: This people saith: The time is not yet come for building the house of the Lord.",
@@ -29796,7 +29796,7 @@ var Bible = map[string]map[string]map[string]string{
 			"24": "In that day, saith the Lord of hosts, I will take thee, O Zorobabel the son of Salathiel, my servant, saith the Lord, and will make thee as a signet, for I have chosen thee, saith the Lord of hosts.",
 		},
 	},
-	"Zechariah": {
+	"zechariah": {
 		"1": {
 			"1":  "In the eighth month, in the second year of king Darius, the word of the Lord came to Zacharias the son of Barachias, the son of Addo, the prophet, saying:",
 			"2":  "The Lord hath been exceeding angry with your fathers.",
@@ -30037,7 +30037,7 @@ var Bible = map[string]map[string]map[string]string{
 			"21": "And every caldron in Jerusalem and Juda shall be sanctified to the Lord of hosts: and all that sacrifice shall come, and take of them, and shall seethe in them: and the merchant shall be no more in the house of the Lord of hosts in that day.",
 		},
 	},
-	"Malachi": {
+	"malachi": {
 		"1": {
 			"1":  "The burden of the word of the Lord to Israel by the hand of Malachias.",
 			"2":  "I have loved you, saith the Lord: and you have said: Wherein hast thou loved us? Was not Esau brother to Jacob, saith the Lord, and I have loved Jacob,",
@@ -30102,7 +30102,7 @@ var Bible = map[string]map[string]map[string]string{
 			"6": "And he shall turn the heart of the fathers to the children, and the heart of the children to their fathers: lest I come, and strike the earth with anathema.",
 		},
 	},
-	"Matthew": {
+	"matthew": {
 		"1": {
 			"1":  "The book of the generation of Jesus Christ, the son of David, the son of Abraham:",
 			"2":  "Abraham begot Isaac. And Isaac begot Jacob. And Jacob begot Judas and his brethren.",
@@ -31230,7 +31230,7 @@ var Bible = map[string]map[string]map[string]string{
 			"20": "Teaching them to observe all things whatsoever I have commanded you: and behold I am with you all days, even to the consummation of the world.",
 		},
 	},
-	"Mark": {
+	"mark": {
 		"1": {
 			"1":  "The beginning of the gospel of Jesus Christ, the Son of God.",
 			"2":  "As it is written in Isaias the prophet: Behold I send my angel before thy face, who shall prepare the way before thee.",
@@ -31941,7 +31941,7 @@ var Bible = map[string]map[string]map[string]string{
 			"20": "But they going forth preached every where: the Lord working withal, and confirming the word with signs that followed.",
 		},
 	},
-	"Luke": {
+	"luke": {
 		"1": {
 			"1":  "Forasmuch as many have taken in hand to set forth in order a narration of the things that have been accomplished among us;",
 			"2":  "According as they have delivered them unto us, who from the beginning were eyewitnesses and ministers of the word:",
@@ -33142,7 +33142,7 @@ var Bible = map[string]map[string]map[string]string{
 			"53": "And they were always in the temple, praising and blessing God. Amen.",
 		},
 	},
-	"John": {
+	"john": {
 		"1": {
 			"1":  "In the beginning was the Word, and the Word was with God, and the Word was God.",
 			"2":  "The same was in the beginning with God.",
@@ -34066,7 +34066,7 @@ var Bible = map[string]map[string]map[string]string{
 			"25": "But there are also many other things which Jesus did; which, if they were written every one, the world itself, I think, would not be able to contain the books that should be written.",
 		},
 	},
-	"Acts": {
+	"acts": {
 		"1": {
 			"1":  "The former treatise I made, O Theophilus, of all things which Jesus began to do and to teach,",
 			"2":  "Until the day on which, giving commandments by the Holy Ghost to the apostles whom he had chosen, he was taken up.",
@@ -35128,7 +35128,7 @@ var Bible = map[string]map[string]map[string]string{
 			"31": "Preaching the kingdom of God, and teaching the things which concern the Lord Jesus Christ, with all confidence, without prohibition.",
 		},
 	},
-	"Romans": {
+	"romans": {
 		"1": {
 			"1":  "Paul, a servant of Jesus Christ, called to be an apostle, separated unto the gospel of God,",
 			"2":  "Which he had promised before, by his prophets, in the holy scriptures,",
@@ -35595,7 +35595,7 @@ var Bible = map[string]map[string]map[string]string{
 			"27": "To God the only wise, through Jesus Christ, to whom be honour and glory for ever and ever. Amen.",
 		},
 	},
-	"1-Corinthians": {
+	"1-corinthians": {
 		"1": {
 			"1":  "Paul, called to be an apostle of Jesus Christ by the will of God, and Sosthenes a brother,",
 			"2":  "To the church of God that is at Corinth, to them that are sanctified in Christ Jesus, called to be saints, with all that invoke the name of our Lord Jesus Christ, in every place of theirs and ours.",
@@ -36066,7 +36066,7 @@ var Bible = map[string]map[string]map[string]string{
 			"24": "My charity be with you all in Christ Jesus. Amen.",
 		},
 	},
-	"2-Corinthians": {
+	"2-corinthians": {
 		"1": {
 			"1":  "Paul, an apostle of Jesus Christ by the will of God, and Timothy our brother: to the church of God that is at Corinth, with all the saints that are in all Achaia:",
 			"2":  "Grace unto you and peace from God our Father, and from the Lord Jesus Christ.",
@@ -36350,7 +36350,7 @@ var Bible = map[string]map[string]map[string]string{
 			"13": "The grace of our Lord Jesus Christ, and the charity of God, and the communication of the Holy Ghost be with you all. Amen.",
 		},
 	},
-	"Galatians": {
+	"galatians": {
 		"1": {
 			"1":  "Paul, an apostle, not of men, neither by man, but by Jesus Christ, and God the Father, who raised him from the dead,",
 			"2":  "And all the brethren who are with me, to the churches of Galatia.",
@@ -36513,7 +36513,7 @@ var Bible = map[string]map[string]map[string]string{
 			"18": "The grace of our Lord Jesus Christ be with your spirit, brethren. Amen.",
 		},
 	},
-	"Ephesians": {
+	"ephesians": {
 		"1": {
 			"1":  "Paul, an apostle of Jesus Christ, by the will of God, to all the saints who are at Ephesus, and to the faithful in Christ Jesus.",
 			"2":  "Grace be to you, and peace from God the Father, and from the Lord Jesus Christ.",
@@ -36682,7 +36682,7 @@ var Bible = map[string]map[string]map[string]string{
 			"24": "Grace be with all them that love our Lord Jesus Christ in incorruption. Amen.",
 		},
 	},
-	"Philippians": {
+	"philippians": {
 		"1": {
 			"1":  "Paul and Timothy, the servants of Jesus Christ; to all the saints in Christ Jesus, who are at Philippi, with the bishops and deacons.",
 			"2":  "Grace be unto you, and peace from God our Father, and from the Lord Jesus Christ.",
@@ -36796,7 +36796,7 @@ var Bible = map[string]map[string]map[string]string{
 			"23": "The grace of our Lord Jesus Christ be with your spirit. Amen.",
 		},
 	},
-	"Colossians": {
+	"colossians": {
 		"1": {
 			"1":  "Paul, an apostle of Jesus Christ, by the will of God, and Timothy, a brother,",
 			"2":  "To the saints and faithful brethren in Christ Jesus, who are at Colossa.",
@@ -36901,7 +36901,7 @@ var Bible = map[string]map[string]map[string]string{
 			"18": "The salutation of Paul with my own hand. Be mindful of my bands. Grace be with you. Amen.",
 		},
 	},
-	"1-Thessalonians": {
+	"1-thessalonians": {
 		"1": {
 			"1":  "Paul and Sylvanus and Timothy: to the church of the Thessalonians, in God the Father, and in the Lord Jesus Christ.",
 			"2":  "Grace be to you and peace. We give thanks to God always for you all; making a remembrance of you in our prayers without ceasing,",
@@ -37001,7 +37001,7 @@ var Bible = map[string]map[string]map[string]string{
 			"28": "The grace of our Lord Jesus Christ be with you. Amen.",
 		},
 	},
-	"2-Thessalonians": {
+	"2-thessalonians": {
 		"1": {
 			"1":  "Paul, and Sylvanus, and Timothy, to the church of the Thessalonians in God our Father, and the Lord Jesus Christ.",
 			"2":  "Grace unto you, and peace from God our Father, and from the Lord Jesus Christ.",
@@ -37055,7 +37055,7 @@ var Bible = map[string]map[string]map[string]string{
 			"18": "The grace of our Lord Jesus Christ be with you all. Amen.",
 		},
 	},
-	"1-Timothy": {
+	"1-timothy": {
 		"1": {
 			"1":  "Paul, an apostle of Jesus Christ, according to the commandment of God our Saviour, and of Christ Jesus our hope:",
 			"2":  "To Timothy, his beloved son in faith. Grace, mercy, and peace from God the Father, and from Christ Jesus our Lord.",
@@ -37182,7 +37182,7 @@ var Bible = map[string]map[string]map[string]string{
 			"21": "Which some promising, have erred concerning the faith. Grace be with thee. Amen.",
 		},
 	},
-	"2-Timothy": {
+	"2-timothy": {
 		"1": {
 			"1":  "Paul, an apostle of Jesus Christ, by the will of God, according to the promise of life, which is in Christ Jesus.",
 			"2":  "To Timothy my dearly beloved son, grace, mercy, and peace, from God the Father, and from Christ Jesus our Lord.",
@@ -37275,7 +37275,7 @@ var Bible = map[string]map[string]map[string]string{
 			"22": "The Lord Jesus Christ be with thy spirit. Grace be with you. Amen.",
 		},
 	},
-	"Titus": {
+	"titus": {
 		"1": {
 			"1":  "Paul, a servant of God, and an apostle of Jesus Christ, according to the faith of the elect of God and the acknowledging of the truth, which is according to godliness:",
 			"2":  "Unto the hope of life everlasting, which God, who lieth not, hath promised before the times of the world:",
@@ -37329,7 +37329,7 @@ var Bible = map[string]map[string]map[string]string{
 			"15": "All that are with me salute thee: salute them that love us in the faith. The grace of God be with you all. Amen.",
 		},
 	},
-	"Philemon": {
+	"philemon": {
 		"1": {
 			"1":  "Paul, a prisoner of Christ Jesus, and Timothy, a brother: to Philemon, our beloved and fellow labourer;",
 			"2":  "And to Appia, our dearest sister, and to Archippus, our fellow soldier, and to the church which is in thy house:",
@@ -37358,7 +37358,7 @@ var Bible = map[string]map[string]map[string]string{
 			"25": "The grace of our Lord Jesus Christ be with your spirit. Amen.",
 		},
 	},
-	"Hebrews": {
+	"hebrews": {
 		"1": {
 			"1":  "God, who, at sundry times and in divers manners, spoke in times past to the fathers by the prophets, last of all,",
 			"2":  "In these days hath spoken to us by his Son, whom he hath appointed heir of all things, by whom also he made the world.",
@@ -37689,7 +37689,7 @@ var Bible = map[string]map[string]map[string]string{
 			"25": "Grace be with you all. Amen.",
 		},
 	},
-	"James": {
+	"james": {
 		"1": {
 			"1":  "James the servant of God, and of our Lord Jesus Christ, to the twelve tribes which are scattered abroad, greeting.",
 			"2":  "My brethren, count it all joy, when you shall fall into divers temptations;",
@@ -37809,7 +37809,7 @@ var Bible = map[string]map[string]map[string]string{
 			"20": "He must know that he who causeth a sinner to be converted from the error of his way, shall save his soul from death, and shall cover a multitude of sins.",
 		},
 	},
-	"1-Peter": {
+	"1-peter": {
 		"1": {
 			"1":  "Peter, an apostle of Jesus Christ, to the strangers dispersed through Pontus, Galatia, Cappadocia, Asia, and Bithynia, elect,",
 			"2":  "According to the foreknowledge of God the Father, unto the sanctification of the Spirit, unto obedience and sprinkling of the blood of Jesus Christ: Grace unto you and peace be multiplied.",
@@ -37926,7 +37926,7 @@ var Bible = map[string]map[string]map[string]string{
 			"14": "Salute one another with a holy kiss. Grace be to all you, who are in Christ Jesus. Amen.",
 		},
 	},
-	"2-Peter": {
+	"2-peter": {
 		"1": {
 			"1":  "Simon Peter, servant and apostle of Jesus Christ, to them that have obtained equal faith with us in the justice of our God and Saviour Jesus Christ.",
 			"2":  "Grace to you and peace be accomplished in the knowledge of God and of Christ Jesus our Lord:",
@@ -37995,7 +37995,7 @@ var Bible = map[string]map[string]map[string]string{
 			"18": "But grow in grace, and in the knowledge of our Lord and Saviour Jesus Christ. To him be glory both now and unto the day of eternity. Amen.",
 		},
 	},
-	"1-John": {
+	"1-john": {
 		"1": {
 			"1":  "That which was from the beginning, which we have heard, which we have seen with our eyes, which we have looked upon, and our hands have handled, of the word of life:",
 			"2":  "For the life was manifested; and we have seen and do bear witness, and declare unto you the life eternal, which was with the Father, and hath appeared to us:",
@@ -38112,7 +38112,7 @@ var Bible = map[string]map[string]map[string]string{
 			"21": "Little children, keep yourselves from idols. Amen.",
 		},
 	},
-	"2-John": {
+	"2-john": {
 		"1": {
 			"1":  "The ancient to the lady Elect, and her children, whom I love in the truth, and not I only, but also all they that have known the truth,",
 			"2":  "For the sake of the truth which dwelleth in us, and shall be with us for ever.",
@@ -38129,7 +38129,7 @@ var Bible = map[string]map[string]map[string]string{
 			"13": "The children of thy sister Elect salute thee.",
 		},
 	},
-	"3-John": {
+	"3-john": {
 		"1": {
 			"1":  "The ancient to the dearly beloved Gaius, whom I love in truth.",
 			"2":  "Dearly beloved, concerning all things I make it my prayer that thou mayest proceed prosperously, and fare well as thy soul doth prosperously.",
@@ -38147,7 +38147,7 @@ var Bible = map[string]map[string]map[string]string{
 			"14": "But I hope speedily to see thee, and we will speak mouth to mouth. Peace be to thee. Our friends salute thee. Salute the friends by name.",
 		},
 	},
-	"Jude": {
+	"jude": {
 		"1": {
 			"1":  "Jude, the servant of Jesus Christ, and brother of James: to them that are beloved in God the Father, and preserved in Jesus Christ, and called.",
 			"2":  "Mercy unto you, and peace, and charity be fulfilled.",
@@ -38176,7 +38176,7 @@ var Bible = map[string]map[string]map[string]string{
 			"25": "To the only God our Saviour through Jesus Christ our Lord, be glory and magnificence, empire and power, before all ages, and now, and for all ages of ages. Amen.",
 		},
 	},
-	"Revelation": {
+	"revelation": {
 		"1": {
 			"1":  "The Revelation of Jesus Christ, which God gave unto him, to make known to his servants the things which must shortly come to pass: and signified, sending by his angel to his servant John,",
 			"2":  "Who hath given testimony to the word of God, and the testimony of Jesus Christ, what things soever he hath seen.",

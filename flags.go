@@ -19,9 +19,7 @@ var (
 
 const (
 	// booksMessage is the output of the --books flag.
-	booksMessage = `Listed below are the 73 books of the Bible
-When using scriptura, refer to books exactly as written below
-*Note capitalization and use of dashes*
+	booksMessage = `Use dashes in place of spaces as shown; capitalization is not necessary
 Genesis
 Exodus
 Leviticus
@@ -44,7 +42,7 @@ Esther
 1-Maccabees
 2-Maccabees
 Job
-Psalms or Psalm
+Psalms
 Proverbs
 Ecclesiastes
 Song-of-Solomon
