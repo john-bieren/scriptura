@@ -108,6 +108,31 @@ func rangeLengthOneNotice(book, passage string) {
 	}
 }
 
+// notEnoughChaptersNotice tells the user if their passage references chapters that do not exist in book.
+func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book string, bold bool) {
+	if bold {
+		if len(bookChapters) > 1 {
+			if book == "Psalms" {
+				fmt.Println("\033[1mThere are only 150 psalms\033[0m")
+			} else {
+				fmt.Printf("\033[1m%s only has %d chapters\033[0m\n", book, len(bookChapters))
+			}
+		} else {
+			fmt.Printf("\033[1m%s only has 1 chapter\033[0m\n", book)
+		}
+	} else {
+		if len(bookChapters) > 1 {
+			if book == "Psalms" {
+				fmt.Println("There are only 150 psalms")
+			} else {
+				fmt.Printf("%s only has %d chapters\n", book, len(bookChapters))
+			}
+		} else {
+			fmt.Printf("%s only has 1 chapter\n", book)
+		}
+	}
+}
+
 // printChapters prints the inclusive range (bounded by start and end) of chapters from bookChapters.
 // start and end can be empty strings representing the start or end of the book's chapters.
 func printChapters(bookChapters map[string]map[string]string, book, start, end string) {
@@ -175,50 +200,6 @@ func printChapters(bookChapters map[string]map[string]string, book, start, end s
 	}
 }
 
-// notEnoughChaptersNotice tells the user if their passage references chapters that do not exist in book.
-func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book string, bold bool) {
-	if bold {
-		if len(bookChapters) > 1 {
-			if book == "Psalms" {
-				fmt.Println("\033[1mThere are only 150 psalms\033[0m")
-			} else {
-				fmt.Printf("\033[1m%s only has %d chapters\033[0m\n", book, len(bookChapters))
-			}
-		} else {
-			fmt.Printf("\033[1m%s only has 1 chapter\033[0m\n", book)
-		}
-	} else {
-		if len(bookChapters) > 1 {
-			if book == "Psalms" {
-				fmt.Println("There are only 150 psalms")
-			} else {
-				fmt.Printf("%s only has %d chapters\n", book, len(bookChapters))
-			}
-		} else {
-			fmt.Printf("%s only has 1 chapter\n", book)
-		}
-	}
-}
-
-// wrapPrint prints text with word wrapping based on terminalWindowWidth.
-func wrapPrint(text string, leadingSpaces, falseLength int) {
-	words := strings.Fields(text)
-	var wrappedText strings.Builder
-	wrappedText.WriteString(strings.Repeat(" ", leadingSpaces))
-	lineLength := leadingSpaces - falseLength
-
-	for _, word := range words {
-		if lineLength+len(word)+1 > terminalWindowWidth {
-			wrappedText.WriteString("\n")
-			lineLength = 0
-		}
-		wrappedText.WriteString(word)
-		wrappedText.WriteString(" ")
-		lineLength += len(word) + 1
-	}
-	fmt.Println(strings.TrimRight(wrappedText.String(), " "))
-}
-
 // printVerses prints the inclusive range (bounded by start and end) of verses from chapterVerses.
 // start and end can be empty strings representing the start or end of the chapter's verses.
 func printVerses(chapterVerses map[string]string, book, chapter, start, end string) {
@@ -282,6 +263,25 @@ func notEnoughVersesNotice(chapterVerses map[string]string, book, chapter string
 			fmt.Printf("%s chapter %s only has %d verses\n", book, chapter, len(chapterVerses))
 		}
 	}
+}
+
+// wrapPrint prints text with word wrapping based on terminalWindowWidth.
+func wrapPrint(text string, leadingSpaces, falseLength int) {
+	words := strings.Fields(text)
+	var wrappedText strings.Builder
+	wrappedText.WriteString(strings.Repeat(" ", leadingSpaces))
+	lineLength := leadingSpaces - falseLength
+
+	for _, word := range words {
+		if lineLength+len(word)+1 > terminalWindowWidth {
+			wrappedText.WriteString("\n")
+			lineLength = 0
+		}
+		wrappedText.WriteString(word)
+		wrappedText.WriteString(" ")
+		lineLength += len(word) + 1
+	}
+	fmt.Println(strings.TrimRight(wrappedText.String(), " "))
 }
 
 // generateRange returns a slice of the string representations of the inclusive range from start to end.
