@@ -10,8 +10,87 @@ import (
 	"golang.org/x/term"
 )
 
-// terminalWindowWidth is the maximum length after which a line must be wrapped during printing.
-var terminalWindowWidth int
+var (
+	// terminalWindowWidth is the maximum length after which a line must be wrapped during printing.
+	terminalWindowWidth int
+
+	// prettyBookNames converts lowercase, dash-separated book names into capitalized ones with spaces.
+	prettyBookNames = map[string]string{
+		"genesis":         "Genesis",
+		"exodus":          "Exodus",
+		"leviticus":       "Leviticus",
+		"numbers":         "Numbers",
+		"deuteronomy":     "Deuteronomy",
+		"joshua":          "Joshua",
+		"judges":          "Judges",
+		"ruth":            "Ruth",
+		"1-samuel":        "1 Samuel",
+		"2-samuel":        "2 Samuel",
+		"1-kings":         "1 Kings",
+		"2-kings":         "2 Kings",
+		"1-chronicles":    "1 Chronicles",
+		"2-chronicles":    "2 Chronicles",
+		"ezra":            "Ezra",
+		"nehemiah":        "Nehemiah",
+		"tobit":           "Tobit",
+		"judith":          "Judith",
+		"esther":          "Esther",
+		"1-maccabees":     "1 Maccabees",
+		"2-maccabees":     "2 Maccabees",
+		"job":             "Job",
+		"psalms":          "Psalms",
+		"proverbs":        "Proverbs",
+		"ecclesiastes":    "Ecclesiastes",
+		"song-of-solomon": "Song of Solomon",
+		"wisdom":          "Wisdom",
+		"sirach":          "Sirach",
+		"isaiah":          "Isaiah",
+		"jeremiah":        "Jeremiah",
+		"lamentations":    "Lamentations",
+		"baruch":          "Baruch",
+		"ezekiel":         "Ezekiel",
+		"daniel":          "Daniel",
+		"hosea":           "Hosea",
+		"joel":            "Joel",
+		"amos":            "Amos",
+		"obadiah":         "Obadiah",
+		"jonah":           "Jonah",
+		"micah":           "Micah",
+		"nahum":           "Nahum",
+		"habakkuk":        "Habakkuk",
+		"zephaniah":       "Zephaniah",
+		"haggai":          "Haggai",
+		"zechariah":       "Zechariah",
+		"malachi":         "Malachi",
+		"matthew":         "Matthew",
+		"mark":            "Mark",
+		"luke":            "Luke",
+		"john":            "John",
+		"acts":            "Acts",
+		"romans":          "Romans",
+		"1-corinthians":   "1 Corinthians",
+		"2-corinthians":   "2 Corinthians",
+		"galatians":       "Galatians",
+		"ephesians":       "Ephesians",
+		"philippians":     "Philippians",
+		"colossians":      "Colossians",
+		"1-thessalonians": "1 Thessalonians",
+		"2-thessalonians": "2 Thessalonians",
+		"1-timothy":       "1 Timothy",
+		"2-timothy":       "2 Timothy",
+		"titus":           "Titus",
+		"philemon":        "Philemon",
+		"hebrews":         "Hebrews",
+		"james":           "James",
+		"1-peter":         "1 Peter",
+		"2-peter":         "2 Peter",
+		"1-john":          "1 John",
+		"2-john":          "2 John",
+		"3-john":          "3 John",
+		"jude":            "Jude",
+		"revelation":      "Revelation",
+	}
+)
 
 // printPassage prints the given passage of book from the Bible.
 func printPassage(book, passage string) {
@@ -100,6 +179,7 @@ func errorIfZeroes(matches []string) {
 
 // rangeLengthOneNotice gives the user feedback if their range has a length of one.
 func rangeLengthOneNotice(book, passage string) {
+	book = prettyBookNames[book]
 	correctInput := strings.TrimSuffix(strings.SplitN(passage, "-", 2)[0], ":")
 	if correctInput == "" {
 		fmt.Printf("\033[1mNote: \"scriptura %s\" produces the same output\033[0m\n", book)
@@ -110,6 +190,7 @@ func rangeLengthOneNotice(book, passage string) {
 
 // notEnoughChaptersNotice tells the user if their passage references chapters that do not exist in book.
 func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book string, bold bool) {
+	book = prettyBookNames[book]
 	if bold {
 		if len(bookChapters) > 1 {
 			if book == "Psalms" {
@@ -250,6 +331,7 @@ func printVerses(chapterVerses map[string]string, book, chapter, start, end stri
 
 // notEnoughVersesNotice tells the user if their passage references verses that do not exist in chapter of book.
 func notEnoughVersesNotice(chapterVerses map[string]string, book, chapter string, bold bool) {
+	book = prettyBookNames[book]
 	if bold {
 		if book == "Psalms" {
 			fmt.Printf("\033[1mPsalm %s only has %d verses\033[0m\n", chapter, len(chapterVerses))
