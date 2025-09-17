@@ -14,7 +14,7 @@ var (
 	// terminalWindowWidth is the maximum length after which a line must be wrapped during printing.
 	terminalWindowWidth int
 
-	// prettyBookNames converts lowercase, dash-separated book names into capitalized ones with spaces.
+	// prettyBookNames converts lowercase, dash-separated book names into capitalized names with spaces.
 	prettyBookNames = map[string]string{
 		"genesis":         "Genesis",
 		"exodus":          "Exodus",
@@ -97,7 +97,7 @@ func printPassage(book, passage string) {
 	var err error
 	terminalWindowWidth, _, err = term.GetSize(int(os.Stdout.Fd()))
 	if err != nil {
-		terminalWindowWidth = 535 // long enough for the longest verse with its number
+		terminalWindowWidth = 532 // length of longest verse (Esther 8:9) printed with its number
 	}
 
 	book = strings.ToLower(book)
@@ -180,7 +180,8 @@ func errorIfZeroes(matches []string) {
 // rangeLengthOneNotice gives the user feedback that they give an unnecessary range of length one.
 func rangeLengthOneNotice(book, passage string) {
 	book = prettyBookNames[book]
-	correctInput := strings.SplitN(passage, "-", 2)[0]
+	// trim ":" in case input is "book ch:-"
+	correctInput := strings.TrimSuffix(strings.SplitN(passage, "-", 2)[0], ":")
 
 	if correctInput == "" {
 		fmt.Printf("\033[1mNote: \"scriptura %s\" produces the same output\033[0m\n", book)
