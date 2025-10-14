@@ -22253,7 +22253,7 @@ var Bible = map[string]map[string]map[string]string{
 			"4":  "Use not much the company of her that is a dancer, and hearken not to her, lest thou perish by the force of her charms.",
 			"5":  "Gaze not upon a maiden, lest her beauty be a stumblingblock to thee.",
 			"6":  "Give not thy soul to harlots in any point: lest thou destroy thyself and thy inheritance.",
-			"7":  "Look not round about thee in the of the city, nor wander up and down in the streets thereof.",
+			"7":  "Look not round about thee in the ways of the city, nor wander up and down in the streets thereof.",
 			"8":  "Turn away thy face from a woman dressed up, and gaze not about upon another’s beauty.",
 			"9":  "For many have perished by the beauty of a woman, and hereby lust is enkindled as a fire.",
 			"10": "Every woman that is a harlot, shall be trodden upon as dung in the way.",
