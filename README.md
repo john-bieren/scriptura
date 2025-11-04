@@ -22,6 +22,8 @@ Options:
 
 ### Usage examples
 
+Lines wrap based on the width of the terminal window, though that behavior is not reflected here.
+
 <pre>
 <code>>>> scriptura genesis 12:1
 And the Lord said to Abram: Go forth out of thy country, and from thy kindred, and out of thy father’s house, and come into the land which I shall shew thee.
@@ -60,6 +62,10 @@ And the Lord said to Abram: Go forth out of thy country, and from thy kindred, a
   <b>2</b> Vanity of vanities, said Ecclesiastes vanity of vanities, and all is vanity.
 ... through chapter 12 (end of book)
 </code></pre>
+
+### Alias scripts
+
+Since scriptura's usage is fairly verbose, I made [scripts](https://github.com/john-bieren/scriptura/tree/master/scripts) in Bash and PowerShell which create alias functions for each book such that `1john 3:16` is equivalent to `scriptura 1-john 3:16`, for example. These aliases are stylized in lowercase with no spaces or dashes, and will work as long as scriptura is in your path environment variable.
 
 ## Install
 
