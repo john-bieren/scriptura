@@ -169,6 +169,7 @@ func printPassage(book, passage string) {
 
 // errorIfZeroes checks for chapter or verse arguments of zero, and exits the program if any are found.
 func errorIfZeroes(matches []string) {
+	// skip first match, which is the entire regex
 	for _, match := range matches[1:] {
 		if match == "0" {
 			fmt.Println("Cannot use zero as an argument")
@@ -177,16 +178,14 @@ func errorIfZeroes(matches []string) {
 	}
 }
 
-// rangeLengthOneNotice gives the user feedback that they give an unnecessary range of length one.
+// rangeLengthOneNotice tells the user that they gave an unnecessary range of length one.
 func rangeLengthOneNotice(book, passage string) {
-	book = prettyBookNames[book]
 	// trim ":" in case input is "book ch:-"
-	correctInput := strings.TrimSuffix(strings.SplitN(passage, "-", 2)[0], ":")
-
-	if correctInput == "" {
+	correctPassage := strings.TrimSuffix(strings.SplitN(passage, "-", 2)[0], ":")
+	if correctPassage == "" {
 		fmt.Printf("\033[1mNote: \"scriptura %s\" produces the same output\033[0m\n", book)
 	} else {
-		fmt.Printf("\033[1mNote: \"scriptura %s %s\" produces the same output\033[0m\n", book, correctInput)
+		fmt.Printf("\033[1mNote: \"scriptura %s %s\" produces the same output\033[0m\n", book, correctPassage)
 	}
 }
 
