@@ -11,8 +11,8 @@ import (
 )
 
 var (
-	// terminalWindowWidth is the maximum length after which a line must be wrapped during printing.
-	terminalWindowWidth int
+	// bookIsPsalms indicates whether the passage to print is from the Book of Psalms.
+	bookIsPsalms bool
 
 	// prettyBookNames converts lowercase, dash-separated book names into capitalized names with spaces.
 	prettyBookNames = map[string]string{
@@ -90,6 +90,9 @@ var (
 		"jude":            "Jude",
 		"revelation":      "Revelation",
 	}
+
+	// terminalWindowWidth is the maximum length after which a line must be wrapped during printing.
+	terminalWindowWidth int
 )
 
 // printPassage prints the given passage of book from the Bible.
@@ -115,6 +118,7 @@ func printPassage(book, passage string) {
 			usage()
 		}
 	}
+	bookIsPsalms = book == "psalms"
 
 	if passage == "" {
 		printChapters(bookChapters, book, "1", "")
@@ -200,7 +204,7 @@ func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book str
 
 	book = prettyBookNames[book]
 	if len(bookChapters) > 1 {
-		if book == "Psalms" {
+		if bookIsPsalms {
 			fmt.Printf("%sThere are only 150 psalms%s\n", bs, be)
 		} else {
 			fmt.Printf("%s%s only has %d chapters%s\n", bs, book, len(bookChapters), be)
@@ -238,7 +242,7 @@ func printChapters(bookChapters map[string]map[string]string, book, start, end s
 			} else {
 				firstNewlineSkipped = true
 			}
-			if book == "Psalms" {
+			if bookIsPsalms {
 				fmt.Printf("  \033[1mPsalm %s\033[0m\n", chapterStr)
 			} else {
 				fmt.Printf("  \033[1mChapter %s\033[0m\n", chapterStr)
@@ -266,7 +270,7 @@ func printChapters(bookChapters map[string]map[string]string, book, start, end s
 				if i > 0 {
 					fmt.Print("\n")
 				}
-				if book == "Psalms" {
+				if bookIsPsalms {
 					fmt.Printf("  \033[1mPsalm %s\033[0m\n", chapter)
 				} else {
 					fmt.Printf("  \033[1mChapter %s\033[0m\n", chapter)
@@ -335,7 +339,7 @@ func notEnoughVersesNotice(chapterVerses map[string]string, book, chapter string
 	}
 
 	book = prettyBookNames[book]
-	if book == "Psalms" {
+	if bookIsPsalms {
 		fmt.Printf("%sPsalm %s only has %d verses%s\n", bs, chapter, len(chapterVerses), be)
 	} else {
 		fmt.Printf("%s%s chapter %s only has %d verses%s\n", bs, book, chapter, len(chapterVerses), be)
