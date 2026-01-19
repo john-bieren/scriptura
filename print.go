@@ -220,64 +220,39 @@ func printChapters(bookChapters map[string]map[string]string, book, start, end s
 	if start == "" {
 		start = "1"
 	}
+	startInt, _ := strconv.Atoi(start)
+	if startInt > len(bookChapters) {
+		notEnoughChaptersNotice(bookChapters, book, false)
+		return
+	}
 
+	var endInt int
 	if end == "" {
-		chapterInt, _ := strconv.Atoi(start)
-		if chapterInt > len(bookChapters) {
-			notEnoughChaptersNotice(bookChapters, book, false)
+		endInt = len(bookChapters)
+	} else {
+		endInt, _ = strconv.Atoi(end)
+	}
+
+	chapters := generateRange(startInt, endInt)
+	for i, chapter := range chapters {
+		chapterVerses, ok := bookChapters[chapter]
+		if !ok {
+			notEnoughChaptersNotice(bookChapters, book, true)
 			return
 		}
-		var chapterStr string
-		var firstNewlineSkipped bool
-		for {
-			chapterStr = strconv.Itoa(chapterInt)
-			chapterVerses, ok := bookChapters[chapterStr]
-			if !ok {
-				break
-			}
 
-			// skip the newline before the first chapter
-			if firstNewlineSkipped {
+		if len(chapters) > 1 || end == "" {
+			// add chapter headings
+			if i > 0 {
 				fmt.Print("\n")
-			} else {
-				firstNewlineSkipped = true
 			}
 			if bookIsPsalms {
-				fmt.Printf("  \033[1mPsalm %s\033[0m\n", chapterStr)
+				fmt.Printf("  \033[1mPsalm %s\033[0m\n", chapter)
 			} else {
-				fmt.Printf("  \033[1mChapter %s\033[0m\n", chapterStr)
+				fmt.Printf("  \033[1mChapter %s\033[0m\n", chapter)
 			}
-			printVerses(chapterVerses, book, chapterStr, "1", "")
-			chapterInt++
 		}
-	} else {
-		startInt, _ := strconv.Atoi(start)
-		if startInt > len(bookChapters) {
-			notEnoughChaptersNotice(bookChapters, book, false)
-			return
-		}
-		endInt, _ := strconv.Atoi(end)
-		chapters := generateRange(startInt, endInt)
-
-		for i, chapter := range chapters {
-			chapterVerses, ok := bookChapters[chapter]
-			if !ok {
-				notEnoughChaptersNotice(bookChapters, book, true)
-				return
-			}
-
-			if len(chapters) > 1 {
-				if i > 0 {
-					fmt.Print("\n")
-				}
-				if bookIsPsalms {
-					fmt.Printf("  \033[1mPsalm %s\033[0m\n", chapter)
-				} else {
-					fmt.Printf("  \033[1mChapter %s\033[0m\n", chapter)
-				}
-			}
-			printVerses(chapterVerses, book, chapter, "1", "")
-		}
+		printVerses(chapterVerses, book, chapter, "1", "")
 	}
 }
 
@@ -287,44 +262,32 @@ func printVerses(chapterVerses map[string]string, book, chapter, start, end stri
 	if start == "" {
 		start = "1"
 	}
+	startInt, _ := strconv.Atoi(start)
+	if startInt > len(chapterVerses) {
+		notEnoughVersesNotice(chapterVerses, book, chapter, false)
+		return
+	}
 
+	var endInt int
 	if end == "" {
-		verseInt, _ := strconv.Atoi(start)
-		if verseInt > len(chapterVerses) {
-			notEnoughVersesNotice(chapterVerses, book, chapter, false)
-			return
-		}
-
-		for {
-			verseStr := strconv.Itoa(verseInt)
-			verseText, ok := chapterVerses[verseStr]
-			if !ok {
-				break
-			}
-			wrapPrint(fmt.Sprintf("\033[1m%s\033[0m %s", verseStr, verseText), 2, 8)
-			verseInt++
-		}
+		endInt = len(chapterVerses)
 	} else {
-		startInt, _ := strconv.Atoi(start)
-		if startInt > len(chapterVerses) {
-			notEnoughVersesNotice(chapterVerses, book, chapter, false)
+		endInt, _ = strconv.Atoi(end)
+	}
+
+	verses := generateRange(startInt, endInt)
+	for _, verseStr := range verses {
+		verseText, ok := chapterVerses[verseStr]
+		if !ok {
+			notEnoughVersesNotice(chapterVerses, book, chapter, true)
 			return
 		}
-		endInt, _ := strconv.Atoi(end)
-		verses := generateRange(startInt, endInt)
 
-		for _, verseStr := range verses {
-			verseText, ok := chapterVerses[verseStr]
-			if !ok {
-				notEnoughVersesNotice(chapterVerses, book, chapter, true)
-				return
-			}
-
-			if len(verses) > 1 {
-				wrapPrint(fmt.Sprintf("\033[1m%s\033[0m %s", verseStr, verseText), 2, 8)
-			} else {
-				wrapPrint(verseText, 0, 0)
-			}
+		if len(verses) > 1 || end == "" {
+			// add verse number
+			wrapPrint(fmt.Sprintf("\033[1m%s\033[0m %s", verseStr, verseText), 2, 8)
+		} else {
+			wrapPrint(verseText, 0, 0)
 		}
 	}
 }
