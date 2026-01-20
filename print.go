@@ -134,50 +134,32 @@ func printPassage(book, passage string) {
 	if crossChapterVersesRe.MatchString(passage) {
 		matches := crossChapterVersesRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
-		if matches[2] == matches[4] {
-			rangeLengthOneNotice(book, passage)
-		} else if matches[1] == matches[3] {
-			sameChapterNotice(book, matches)
-		}
-
 		printChapters(bookChapters, book, matches[1], matches[3], matches[2], matches[4])
 	} else if chaptersRe.MatchString(passage) {
 		matches := chaptersRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
-		if matches[1] == matches[2] {
-			rangeLengthOneNotice(book, passage)
-		}
-
 		printChapters(bookChapters, book, matches[1], matches[2], "", "")
 	} else if chapterRe.MatchString(passage) {
 		matches := chapterRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
-
 		printChapters(bookChapters, book, matches[1], matches[1], "", "")
 	} else if versesRe.MatchString(passage) {
 		matches := versesRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
-		if matches[2] == matches[3] {
-			rangeLengthOneNotice(book, passage)
-		}
-
 		chapterVerses, ok := bookChapters[matches[1]]
 		if !ok {
 			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
-
 		printVerses(chapterVerses, book, matches[1], matches[2], matches[3])
 	} else if verseRe.MatchString(passage) {
 		matches := verseRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
-
 		chapterVerses, ok := bookChapters[matches[1]]
 		if !ok {
 			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
-
 		printVerses(chapterVerses, book, matches[1], matches[2], matches[2])
 	} else {
 		fmt.Println("Invalid arguments")
@@ -194,22 +176,6 @@ func errorIfZeroes(matches []string) {
 			os.Exit(1)
 		}
 	}
-}
-
-// rangeLengthOneNotice tells the user that they gave an unnecessary range of length one.
-func rangeLengthOneNotice(book, passage string) {
-	// trim ":" in case input is "book ch:-"
-	correctPassage := strings.TrimSuffix(strings.SplitN(passage, "-", 2)[0], ":")
-	if correctPassage == "" {
-		fmt.Printf("\033[1mNote: \"scriptura %s\" produces the same output\033[0m\n", book)
-	} else {
-		fmt.Printf("\033[1mNote: \"scriptura %s %s\" produces the same output\033[0m\n", book, correctPassage)
-	}
-}
-
-// sameChapterNotice tells the user that they gave a range of verses from the same chapter.
-func sameChapterNotice(book string, matches []string) {
-	fmt.Printf("\033[1mNote: \"scriptura %s %s:%s-%s\" produces the same output\033[0m\n", book, matches[1], matches[2], matches[4])
 }
 
 // notEnoughChaptersNotice tells the user that their passage references chapters that do not exist in book.
