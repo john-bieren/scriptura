@@ -121,27 +121,39 @@ func printPassage(book, passage string) {
 	bookIsPsalms = book == "psalms"
 
 	if passage == "" {
-		printChapters(bookChapters, book, "1", "")
+		printChapters(bookChapters, book, "1", "", "", "")
 		return
 	}
 
+	crossChapterVersesRe := regexp.MustCompile("^([0-9]+):([0-9]+)-([0-9]+):([0-9]+)$")
 	chaptersRe := regexp.MustCompile("^([0-9]*)-([0-9]*)$")
 	chapterRe := regexp.MustCompile("^([0-9]+)$")
 	versesRe := regexp.MustCompile("^([0-9]+):([0-9]*)-([0-9]*)$")
 	verseRe := regexp.MustCompile("^([0-9]+):([0-9]+)$")
 
-	if chaptersRe.MatchString(passage) {
+	if crossChapterVersesRe.MatchString(passage) {
+		matches := crossChapterVersesRe.FindStringSubmatch(passage)
+		errorIfZeroes(matches)
+		if matches[2] == matches[4] {
+			rangeLengthOneNotice(book, passage)
+		} else if matches[1] == matches[3] {
+			sameChapterNotice(book, matches)
+		}
+
+		printChapters(bookChapters, book, matches[1], matches[3], matches[2], matches[4])
+	} else if chaptersRe.MatchString(passage) {
 		matches := chaptersRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
 		if matches[1] == matches[2] {
 			rangeLengthOneNotice(book, passage)
 		}
 
-		printChapters(bookChapters, book, matches[1], matches[2])
+		printChapters(bookChapters, book, matches[1], matches[2], "", "")
 	} else if chapterRe.MatchString(passage) {
 		matches := chapterRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
-		printChapters(bookChapters, book, matches[1], matches[1])
+
+		printChapters(bookChapters, book, matches[1], matches[1], "", "")
 	} else if versesRe.MatchString(passage) {
 		matches := versesRe.FindStringSubmatch(passage)
 		errorIfZeroes(matches)
@@ -154,6 +166,7 @@ func printPassage(book, passage string) {
 			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
+
 		printVerses(chapterVerses, book, matches[1], matches[2], matches[3])
 	} else if verseRe.MatchString(passage) {
 		matches := verseRe.FindStringSubmatch(passage)
@@ -164,6 +177,7 @@ func printPassage(book, passage string) {
 			notEnoughChaptersNotice(bookChapters, book, false)
 			return
 		}
+
 		printVerses(chapterVerses, book, matches[1], matches[2], matches[2])
 	} else {
 		fmt.Println("Invalid arguments")
@@ -193,6 +207,11 @@ func rangeLengthOneNotice(book, passage string) {
 	}
 }
 
+// sameChapterNotice tells the user that they gave a range of verses from the same chapter.
+func sameChapterNotice(book string, matches []string) {
+	fmt.Printf("\033[1mNote: \"scriptura %s %s:%s-%s\" produces the same output\033[0m\n", book, matches[1], matches[2], matches[4])
+}
+
 // notEnoughChaptersNotice tells the user that their passage references chapters that do not exist in book.
 func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book string, bold bool) {
 	// insert escape sequences to start and end bold text, if applicable
@@ -214,26 +233,30 @@ func notEnoughChaptersNotice(bookChapters map[string]map[string]string, book str
 	}
 }
 
-// printChapters prints the inclusive range (bounded by start and end) of chapters from bookChapters.
-// start and end can be empty strings representing the start or end of the book's chapters.
-func printChapters(bookChapters map[string]map[string]string, book, start, end string) {
-	if start == "" {
-		start = "1"
+// printChapters prints the inclusive range from startChapter:startVerse to endChapter:endVerse from bookChapters.
+// Start and end parameters can be empty strings representing the start or end of the relevant text.
+func printChapters(
+	bookChapters map[string]map[string]string,
+	book, startChapter, endChapter, startVerse, endVerse string,
+) {
+	if startChapter == "" {
+		startChapter = "1"
 	}
-	startInt, _ := strconv.Atoi(start)
+	startInt, _ := strconv.Atoi(startChapter)
 	if startInt > len(bookChapters) {
 		notEnoughChaptersNotice(bookChapters, book, false)
 		return
 	}
 
 	var endInt int
-	if end == "" {
+	if endChapter == "" {
 		endInt = len(bookChapters)
 	} else {
-		endInt, _ = strconv.Atoi(end)
+		endInt, _ = strconv.Atoi(endChapter)
 	}
 
 	chapters := generateRange(startInt, endInt)
+	finalChapterIndex := endInt - startInt
 	for i, chapter := range chapters {
 		chapterVerses, ok := bookChapters[chapter]
 		if !ok {
@@ -241,7 +264,7 @@ func printChapters(bookChapters map[string]map[string]string, book, start, end s
 			return
 		}
 
-		if len(chapters) > 1 || end == "" {
+		if (len(chapters) > 1 || endChapter == "") && !(startVerse != "" && i == 0) {
 			// add chapter headings
 			if i > 0 {
 				fmt.Print("\n")
@@ -252,7 +275,19 @@ func printChapters(bookChapters map[string]map[string]string, book, start, end s
 				fmt.Printf("  \033[1mChapter %s\033[0m\n", chapter)
 			}
 		}
-		printVerses(chapterVerses, book, chapter, "1", "")
+
+		if finalChapterIndex == 0 {
+			printVerses(chapterVerses, book, chapter, startVerse, endVerse)
+		} else {
+			switch i {
+			case 0:
+				printVerses(chapterVerses, book, chapter, startVerse, "")
+			case finalChapterIndex:
+				printVerses(chapterVerses, book, chapter, "1", endVerse)
+			default:
+				printVerses(chapterVerses, book, chapter, "1", "")
+			}
+		}
 	}
 }
 

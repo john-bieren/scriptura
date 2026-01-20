@@ -130,6 +130,7 @@ Usage: scriptura <book>
        scriptura <book> <chapter>
        scriptura <book> <chapter>:[start_verse]-[end_verse]
        scriptura <book> <chapter>:<verse>
+       scriptura <book> <chapter>:<verse>-<chapter>:<verse>
 
 Options:
        --books    Print the list of books and exit

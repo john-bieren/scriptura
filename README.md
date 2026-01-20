@@ -12,6 +12,7 @@ Usage: scriptura <book>
        scriptura <book> <chapter>
        scriptura <book> <chapter>:[start_verse]-[end_verse]
        scriptura <book> <chapter>:<verse>
+       scriptura <book> <chapter>:<verse>-<chapter>:<verse>
 
 Options:
        --books    Print the list of books and exit
@@ -40,6 +41,16 @@ And the Lord said to Abram: Go forth out of thy country, and from thy kindred, a
   <b>11</b> Put you on the armour of God, that you may be able to stand against the deceits of the devil.
   <b>12</b> For our wrestling is not against flesh and blood; but against principalities and power, against the rulers of the world of this darkness, against the spirits of wickedness in the high places.
 ... through verse 24 (end of chapter)
+</code></pre>
+<pre>
+<code>>>> scriptura jonah 3:10-4:4
+  <b>10</b> And God saw their works, that they were turned from their evil way: and God had mercy with regard to the evil which he had said that he would do to them, and he did it not.
+
+  <b>Chapter 4</b>
+  <b>1</b> And Jonas was exceedingly troubled, and was angry:
+  <b>2</b> And he prayed to the Lord, and said: I beseech thee, O Lord, is not this what I said, when I was yet in my own country? therefore I went before to flee into Tharsis: for I know that thou art a gracious and merciful God, patient, and of much compassion, and easy to forgive evil.
+  <b>3</b> And now, O Lord, I beseech thee take my life from me: for it is better for me to die than to live.
+  <b>4</b> And the Lord said: Dost thou think thou hast reason to be angry?
 </code></pre>
 <pre>
 <code>>>> scriptura revelation 22
