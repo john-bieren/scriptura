@@ -97,6 +97,7 @@ Revelation`
 	// licenseMessage is the output of the --license flag.
 	licenseMessage = `scriptura uses the Douay-Rheims 1899 American Edition (DRA) version of the Bible
 The text was sourced from eBible.org: ebible.org/Scriptures/engDRA_readaloud.zip
+Many errors were corrected thanks to github.com/yoarikso/douayrheimsbible
 
 scriptura's source code can be found at github.com/john-bieren/scriptura
 This program is licensed under the MIT license:
