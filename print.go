@@ -109,11 +109,12 @@ func printPassage(book, passage string) {
 		if book == "psalm" {
 			book = "psalms"
 			bookChapters = Bible[book]
-		} else if regexp.MustCompile("^[1-3a-z-]+$").MatchString(book) {
-			fmt.Printf("Unrecognized book \"%s\": check your spelling and formatting\n", book)
-			fmt.Println("Run 'scriptura --books' to see the properly formatted book names")
-			os.Exit(1)
 		} else {
+			if regexp.MustCompile("^[1-3a-z-]+$").MatchString(book) {
+				fmt.Printf("Unrecognized book \"%s\": check your spelling and formatting\n", book)
+				fmt.Println("Run 'scriptura --books' to see the properly formatted book names")
+				os.Exit(1)
+			}
 			fmt.Println("Invalid arguments")
 			usage()
 		}
