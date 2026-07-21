@@ -206,13 +206,15 @@ func printChapters(
 	bookChapters map[string]map[string]string,
 	book, startChapter, endChapter, startVerse, endVerse string,
 ) {
+	var startInt int
 	if startChapter == "" {
-		startChapter = "1"
-	}
-	startInt, _ := strconv.Atoi(startChapter)
-	if startInt > len(bookChapters) {
-		notEnoughChaptersNotice(bookChapters, book, false)
-		return
+		startInt = 1
+	} else {
+		startInt, _ = strconv.Atoi(startChapter)
+		if startInt > len(bookChapters) {
+			notEnoughChaptersNotice(bookChapters, book, false)
+			return
+		}
 	}
 
 	var endInt int
@@ -220,16 +222,17 @@ func printChapters(
 		endInt = len(bookChapters)
 	} else {
 		endInt, _ = strconv.Atoi(endChapter)
+		if endInt > len(bookChapters) {
+			endInt = len(bookChapters)
+			endVerse = ""
+			defer notEnoughChaptersNotice(bookChapters, book, true)
+		}
 	}
 
 	chapters := generateRange(startInt, endInt)
 	finalChapterIndex := endInt - startInt
 	for i, chapter := range chapters {
-		chapterVerses, ok := bookChapters[chapter]
-		if !ok {
-			notEnoughChaptersNotice(bookChapters, book, true)
-			return
-		}
+		chapterVerses, _ := bookChapters[chapter]
 
 		if (len(chapters) > 1 || endChapter == "") && !(startVerse != "" && i == 0) {
 			// add chapter headings
@@ -275,15 +278,15 @@ func printVerses(chapterVerses map[string]string, book, chapter, start, end stri
 		endInt = len(chapterVerses)
 	} else {
 		endInt, _ = strconv.Atoi(end)
+		if endInt > len(chapterVerses) {
+			endInt = len(chapterVerses)
+			defer notEnoughVersesNotice(chapterVerses, book, chapter, true)
+		}
 	}
 
 	verses := generateRange(startInt, endInt)
 	for _, verseStr := range verses {
-		verseText, ok := chapterVerses[verseStr]
-		if !ok {
-			notEnoughVersesNotice(chapterVerses, book, chapter, true)
-			return
-		}
+		verseText, _ := chapterVerses[verseStr]
 
 		if len(verses) > 1 || end == "" {
 			// add verse number
